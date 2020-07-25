@@ -85,5 +85,4 @@ REDIRECTS TO LONG URL WEBSITE
 
 #### Output
 
-![](./public/screenshot-0.png)
-![](./public/screenshot-1.png)
+![Simplify](https://i.imgur.com/SUr7Ekg.gif)
