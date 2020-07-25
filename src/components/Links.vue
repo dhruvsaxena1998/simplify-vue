@@ -35,8 +35,9 @@ export default {
 
 <style lang="scss" scoped>
 .list {
+  margin-top: 1rem;
   overflow: auto;
-  max-height: 365px;
+  max-height: 400px;
   &::-webkit-scrollbar {
     display: block;
     width: 5px;

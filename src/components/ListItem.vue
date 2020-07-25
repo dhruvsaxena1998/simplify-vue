@@ -1,32 +1,46 @@
 <template>
-  <v-card class="mx-auto" max-width="400" tile>
+<v-card
+    class="mx-auto my-2"
+    color="#f4f5f4"
+  >
     <v-list-item>
-      <v-list-item-content>
-        <v-list-item-title v-text="link.longUrl"></v-list-item-title>
-      </v-list-item-content>
-      <v-list-item-content>
-        <v-list-item-title v-text="link.shortUrl"></v-list-item-title>
+      <v-list-item-content two-line>
+        <v-list-item-title>{{ link.longUrl }}</v-list-item-title>
+        <span class="overline">#{{ link.shortUrl }}</span>
       </v-list-item-content>
       <v-list-item-icon>
-        <v-icon :color="item.active ? 'deep-purple accent-4' : 'grey'"
-          >chat_bubble</v-icon
-        >
-      </v-list-item-icon>
+          <v-btn color="success" value="COPY" @click="copy"> Copy </v-btn>
+        </v-list-item-icon>
     </v-list-item>
+    <v-sheet v-if="sheet" color="success px-4" class="anim" dark>URL has been copied to your clipboard</v-sheet>
   </v-card>
 </template>
 
 <script>
 export default {
   name: "listItem",
-//   props: ["link"],
-    data () {
-        return {
-            link: {
-                longUrl: 'htladada',
-                shortUrl: 'asa'
-            }
-        }
+  props: ["link"],
+  data () {
+    return {
+      sheet: false
     }
+  },
+  methods: {
+    copy () {
+      const url = window.location.host + '/' + this.link.shortUrl
+      window.navigator.clipboard.writeText(url)
+      console.log(url)
+      this.sheet = true
+      setTimeout(() => {
+        this.sheet = false
+      }, 2500)
+    }
+  }
 };
 </script>
+<style lang="scss" scoped>
+.anim {
+  transition: .3s;
+
+}
+</style>

@@ -23,7 +23,8 @@ export default {
   methods: {
     ...mapActions(["addLink"]),
     simplify() {
-        this.addLink(this.url)
+      this.addLink(this.url);
+      this.$refs.form.reset();
     },
     reset() {
       this.$refs.form.reset();
