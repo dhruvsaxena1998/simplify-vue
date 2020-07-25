@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const customId = require('custom-id')
 
 const Data = require("./Model");
 
@@ -10,7 +11,8 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const url = await Data.create({
-    longUrl: req.body.url
+    longUrl: req.body.url,
+    shortUrl: customId({ name: req.body.url, lowerCase: true })
   });
   res.send(url);
 });

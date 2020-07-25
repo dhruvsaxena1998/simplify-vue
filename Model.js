@@ -1,5 +1,5 @@
 const monsoose = require("mongoose");
-const shortId = require("shortid");
+const customId = require("custom-id");
 const Schema = monsoose.Schema;
 const dataSchema = new Schema({
     longUrl: {
@@ -8,7 +8,7 @@ const dataSchema = new Schema({
     },
     shortUrl: {
         type: String,
-        default: shortId.generate()
+        default: customId({ lowerCase: true })
     },
     views: {
         type: Number,

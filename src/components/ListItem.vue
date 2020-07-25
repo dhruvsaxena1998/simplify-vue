@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import constants from '../env'
 export default {
   name: "listItem",
   props: ["link"],
@@ -27,7 +28,7 @@ export default {
   },
   methods: {
     copy () {
-      const url = window.location.host + '/' + this.link.shortUrl
+      const url = constants.server + this.link.shortUrl
       window.navigator.clipboard.writeText(url)
       console.log(url)
       this.sheet = true

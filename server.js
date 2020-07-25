@@ -17,7 +17,7 @@ const url = require('./router');
 
 app.use('/api/v1/url',url)
 app.get('/:shortUrl', async (req,res) => {
-  const url = await Data.findOne({ shortUrl: req.params.shortUrl})
+  const url = await Data.findOne({ shortUrl: req.params.shortUrl })
   res.redirect(url.longUrl)
 })
 
